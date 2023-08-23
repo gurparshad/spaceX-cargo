@@ -1,0 +1,22 @@
+.sideMenuContainer {
+  background-color: rgb(193, 220, 75);
+  width: 250px;
+  padding: 30px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  bottom: 0; 
+}
+
+.sideMenuOptions{
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  /* padding: 20px; */
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.content{
+
+}
