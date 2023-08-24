@@ -1,20 +1,28 @@
 "use client";
+import {toggleMenuVisibility} from "@/app/redux/actions/menuActions";
+import {setShipment} from "@/app/redux/actions/shipmentActions";
 import React from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {ShipmentObj} from "../../utils/types";
-import "./sideMenu.css";
+import styles from "./sideMenu.module.css";
 
-interface SideMenuProps {
-  shipments: ShipmentObj[];
-}
+const SideMenu: React.FC = () => {
+  const dispatch = useDispatch();
+  const shipments = useSelector((state: any) => state.shipment?.filteredShipments);
 
-const SideMenu: React.FC<SideMenuProps> = ({shipments}) => {
-  const shipmentNames = shipments.map((shipment: ShipmentObj) => shipment.name);
+  const handleRowClick = (shipment: ShipmentObj) => {
+    dispatch(setShipment(shipment));
+    dispatch(toggleMenuVisibility());
+  };
+
   return (
-    <div className="sideMenuContainer">
-      <h3>SHIPMENT LIST</h3>
-      <ul className="sideMenuOptions">
-        {shipmentNames.map((name, index) => (
-          <li key={index}>{name}</li>
+    <div className={styles.sideMenuContainer}>
+      <h4 className={styles.title}>SHIPMENT LIST</h4>
+      <ul className={styles.sideMenuOptions}>
+        {shipments?.map((shipment: ShipmentObj, index: number) => (
+          <li onClick={() => handleRowClick(shipment)} key={index}>
+            {shipment.name}
+          </li>
         ))}
       </ul>
     </div>

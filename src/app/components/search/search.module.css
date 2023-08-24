@@ -1,0 +1,18 @@
+.customInput:focus {
+  outline: none;
+}
+
+.customInput {
+  width: 300px;
+  height: 40px; 
+  border-radius: 15px;
+  font-size: 15px;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .customInput{
+    width: 88%;
+    position: relative;
+  }
+}
