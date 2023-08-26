@@ -1,13 +1,12 @@
-import App from "./components/app/app";
-
-const getShipments = async () => {
-  const response = await fetch(`${process.env.API_BASE_URL}/shipments.json`, {
-    cache: "no-store",
-  });
-  return response.json();
-};
+import Shipment from "./components/shipment/Shipment";
+import styles from "./page.module.css";
 
 export default async function Home() {
-  const shipments = await getShipments();
-  return <App shipments={shipments} />;
+  return (
+    <div>
+      <div className={styles.body}>
+        <Shipment />
+      </div>
+    </div>
+  );
 }

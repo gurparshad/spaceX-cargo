@@ -47,7 +47,7 @@
   background: linear-gradient(90deg, rgba(45, 48, 56, 0) 22.92%, #2D3038 100%);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .sideMenuContainer {
     background-color: #1B1D22;
     width: 100%;

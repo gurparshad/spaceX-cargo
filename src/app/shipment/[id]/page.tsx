@@ -1,6 +1,6 @@
 import {ShipmentApi} from "@/app/api";
 import Shipment from "@/app/components/shipment/Shipment";
-import styles from "../../components/app/app.module.css";
+import styles from "../../page.module.css";
 
 const shipmentApi = new ShipmentApi();
 

@@ -10,7 +10,7 @@
   padding: 0 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .customInput{
     width: 88%;
     position: relative;

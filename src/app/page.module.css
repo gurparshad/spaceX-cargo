@@ -1,0 +1,15 @@
+.body {
+  padding-top: 70px;
+  padding-left: 270px;
+  margin-left: 80px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 750px) {
+  .body {
+    padding-top: 100px;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
