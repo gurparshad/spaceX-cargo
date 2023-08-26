@@ -1,11 +1,14 @@
 "use client";
+import {ShipmentObj} from "@/app/utils/types";
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
 import styles from "./shipment.module.css";
 
-const Shipment: React.FC = () => {
+interface ShipmentProps {
+  shipment?: ShipmentObj;
+}
+
+const Shipment: React.FC<ShipmentProps> = ({shipment}) => {
   const [cargoBoxes, setCargoBoxes] = useState<string>("");
-  const shipment = useSelector((state: any) => state.shipment.shipment);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCargoBoxes(e.target.value);

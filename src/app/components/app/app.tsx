@@ -1,8 +1,6 @@
 "use client";
-import React, {useState} from "react";
-import Header from "../header/Header";
+import React from "react";
 import Shipment from "../shipment/Shipment";
-import SideMenu from "../sideMenu/SideMenu";
 import styles from "./app.module.css";
 import {ShipmentObj} from "../../utils/types";
 import {setShipments} from "../../redux/actions/shipmentActions";
@@ -25,7 +23,6 @@ const App: React.FC<AppProps> = ({shipments}) => {
   dispatch(setShipments(shipments));
   return (
     <div className={styles.header}>
-      <Header />
       {isMenuVisible ? (
         <Image
           src={crossIcon}
@@ -47,7 +44,7 @@ const App: React.FC<AppProps> = ({shipments}) => {
       )}
 
       <div className={styles.body}>
-        {isMenuVisible && <SideMenu />}
+        {/* {isMenuVisible && <SideMenu />} */}
         <div className={styles.content}>
           <Shipment />
         </div>

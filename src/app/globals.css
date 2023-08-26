@@ -21,3 +21,11 @@ code {
 h1, h2, h3, h4, h5, h6, p{
   margin: 0px;
 }
+
+.menuIcon, .crossIcon{
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  z-index: 200;
+  visibility: hidden;
+}

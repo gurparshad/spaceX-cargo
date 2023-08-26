@@ -1,7 +1,7 @@
 import App from "./components/app/app";
 
 const getShipments = async () => {
-  const response = await fetch(`${process.env.API_BASE_URL}/shipments.json`, {
+  const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/shipments.json`, {
     cache: "no-store",
   });
   return response.json();
