@@ -13,6 +13,7 @@ const SideMenu: React.FC = () => {
   const shipmentApi = new ShipmentApi();
   const pathname = usePathname();
   const currentShipmentId = pathname.split("/")[2];
+  const isMenuVisible = useSelector((state: any) => state.menu.isMenuVisible);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,20 +38,24 @@ const SideMenu: React.FC = () => {
   };
 
   return (
-    <div className={styles.sideMenuContainer}>
-      <h4 className={styles.title}>SHIPMENT LIST</h4>
-      <ul className={styles.sideMenuOptions}>
-        {shipments?.map((shipment: ShipmentObj, index: number) => (
-          <Link
-            href={`/shipment/${shipment.id}`}
-            key={index}
-            className={`${styles.listItem} ${shipment.id === currentShipmentId ? styles.activeListItem : ""}`}
-          >
-            <li onClick={() => handleRowClick(shipment)}>{shipment.name}</li>
-          </Link>
-        ))}
-      </ul>
-    </div>
+    isMenuVisible && (
+      <div>
+        <div className={styles.sideMenuContainer}>
+          <h4 className={styles.title}>SHIPMENT LIST</h4>
+          <ul className={styles.sideMenuOptions}>
+            {shipments?.map((shipment: ShipmentObj, index: number) => (
+              <Link
+                href={`/shipment/${shipment.id}`}
+                key={index}
+                className={`${styles.listItem} ${shipment.id === currentShipmentId ? styles.activeListItem : ""}`}
+              >
+                <li onClick={() => handleRowClick(shipment)}>{shipment.name}</li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
   );
 };
 
