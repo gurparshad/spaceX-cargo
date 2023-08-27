@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {ShipmentObj} from "../../utils/types";
 import styles from "./sideMenu.module.css";
 import {usePathname} from "next/navigation";
+import Loading from "../loading/Loading";
 
 const SideMenu: React.FC = () => {
   const shipmentApi = new ShipmentApi();
@@ -47,15 +48,19 @@ const SideMenu: React.FC = () => {
         <div className={styles.sideMenuContainer}>
           <h4 className={styles.title}>SHIPMENT LIST</h4>
           <ul className={styles.sideMenuOptions}>
-            {shipments?.map((shipment: ShipmentObj, index: number) => (
-              <Link
-                href={`/shipment/${shipment.id}`}
-                key={index}
-                className={`${styles.listItem} ${shipment.id === currentShipmentId ? styles.activeListItem : ""}`}
-              >
-                <li onClick={() => handleRowClick(shipment)}>{shipment.name}</li>
-              </Link>
-            ))}
+            {shipments ? (
+              shipments.map((shipment: ShipmentObj, index: number) => (
+                <Link
+                  href={`/shipment/${shipment.id}`}
+                  key={index}
+                  className={`${styles.listItem} ${shipment.id === currentShipmentId ? styles.activeListItem : ""}`}
+                >
+                  <li onClick={() => handleRowClick(shipment)}>{shipment.name}</li>
+                </Link>
+              ))
+            ) : (
+              <Loading />
+            )}
           </ul>
         </div>
       </div>
