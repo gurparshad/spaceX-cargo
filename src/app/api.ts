@@ -3,6 +3,7 @@ import { ShipmentObj } from "./utils/types";
 
 export class ShipmentApi {
   private client: AxiosInstance;
+  private shipments: ShipmentObj[];
 
   private routes = {
     GET_SHIPMENTS: "/shipments.json",
@@ -24,18 +25,25 @@ export class ShipmentApi {
     this.client = axios.create({
       baseURL: process.env.API_BASE_URL,
     });
+    this.shipments = []
   }
 
   public getShipments = async () => {
-    return await this.handleRequest(
+    this.shipments = await this.handleRequest(
       this.client.get(this.routes.GET_SHIPMENTS)
     );
+    return this.shipments;
   }
 
   public getShipment = async (id: string) => {
-    const shipments = await this.getShipments();
-    const shipment = shipments.find((shipment: ShipmentObj) => shipment.id === id);
-    return shipment;
+    if (this.shipments.length > 0) {
+      const shipment = this.shipments.find((shipment: ShipmentObj) => shipment.id === id);
+      return shipment;
+    } else {
+      const fetchedShipments = await this.getShipments();
+      const shipment = fetchedShipments.find((shipment: ShipmentObj) => shipment.id === id);
+      return shipment;
+    }
   }
 
 }
