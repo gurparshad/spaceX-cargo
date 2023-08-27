@@ -1,7 +1,7 @@
 "use client";
 import {ShipmentApi} from "@/app/api";
 import {toggleMenuVisibility} from "@/app/redux/actions/menuActions";
-import {setFilteredShipments, setShipment} from "@/app/redux/actions/shipmentActions";
+import {setFilteredShipments, setShipment, setShipments} from "@/app/redux/actions/shipmentActions";
 import Link from "next/link";
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
@@ -14,11 +14,15 @@ const SideMenu: React.FC = () => {
   const pathname = usePathname();
   const currentShipmentId = pathname.split("/")[2];
   const isMenuVisible = useSelector((state: any) => state.menu.isMenuVisible);
+
   useEffect(() => {
+    console.log("in useEffect");
     const fetchData = async () => {
+      console.log("in fetchData");
       try {
         const shipments = await shipmentApi.getShipments();
         dispatch(setFilteredShipments(shipments));
+        dispatch(setShipments(shipments));
       } catch (error) {
         console.error("Error fetching data:", error);
       }

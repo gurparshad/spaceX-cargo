@@ -15,6 +15,9 @@ const Shipment: React.FC<ShipmentProps> = ({shipment}) => {
   };
 
   const calculateCargoBays = () => {
+    if (cargoBoxes === "") {
+      return 0;
+    }
     const numbers: number[] = cargoBoxes.split(",").map((str) => parseFloat(str.trim()));
     const numbersSum = numbers.reduce((acc, num) => acc + num, 0);
     return Math.ceil(numbersSum / 10);

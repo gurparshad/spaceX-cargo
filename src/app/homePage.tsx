@@ -12,8 +12,8 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({shipments}) => {
   const dispatch = useDispatch();
-  dispatch(setShipments(shipments));
-  dispatch(setFilteredShipments(shipments));
+  // dispatch(setShipments(shipments));
+  // dispatch(setFilteredShipments(shipments));
   return (
     <div className={styles.body}>
       <Shipment />
