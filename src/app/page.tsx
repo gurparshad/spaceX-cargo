@@ -1,17 +1,10 @@
-import {ShipmentApi} from "./api";
-import HomePage from "./homePage";
-
-// SSR
-const fetchShipments = async () => {
-  const shipmentApi = new ShipmentApi();
-  return await shipmentApi.getShipments();
-};
+import Shipment from "./components/shipment/Shipment";
+import styles from "./page.module.css";
 
 export default async function Home() {
-  const shipments = await fetchShipments();
   return (
-    <div>
-      <HomePage shipments={shipments} />
+    <div className={styles.body}>
+      <Shipment />
     </div>
   );
 }

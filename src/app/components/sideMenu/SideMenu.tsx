@@ -17,9 +17,7 @@ const SideMenu: React.FC = () => {
   const isMenuVisible = useSelector((state: any) => state.menu.isMenuVisible);
 
   useEffect(() => {
-    console.log("in useEffect");
     const fetchData = async () => {
-      console.log("in fetchData");
       try {
         const shipments = await shipmentApi.getShipments();
         dispatch(setFilteredShipments(shipments));
