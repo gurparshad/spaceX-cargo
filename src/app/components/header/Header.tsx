@@ -7,6 +7,7 @@ import Image from "next/image";
 import hamburgerIcon from "../../../assets/hamburger.svg";
 import crossIcon from "../../../assets/cross.svg";
 import {toggleMenuVisibility} from "@/app/redux/actions/menuActions";
+import Link from "next/link";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,9 @@ const Header = () => {
           onClick={() => handleMenuOpen()}
         />
       )}
-      <Image src="/logo.png" alt="logo" width={180} height={37} />
+      <Link href="/">
+        <Image src="/logo.png" alt="logo" width={180} height={37} />
+      </Link>
       <Search />
     </div>
   );
